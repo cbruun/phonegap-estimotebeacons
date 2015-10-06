@@ -1,3 +1,11 @@
+# iOS9 fix
+
+This is a fork of the original evothings phonegap-estimotebeacons plugin. It fixes the kCLErrorDomain code 5 on iOS9 when you start the monitor: 
+
+`ERROR|SystemFenceDao| Failed to monitor for region - Error Domain=kCLErrorDomain Code=5 "(null)`
+
+A pull request has been submited, if you can't wait you can use this fork. 
+
 # Estimote Cordova/PhoneGap plugin
 
 This plugin makes it easy to develop Cordova apps for Estimote Beacons and Estimote Stickers. Use JavaScript and HTML to develop stunning apps that take advantage of the capabilities of Estimote Beacons and Stickers.
