@@ -2046,8 +2046,6 @@
 	[self sendTriggerEventToJavaScript: event];
 }
 
-#pragma mark - Bluetooth State Implementation
-
 #pragma mark - Trigger object
 
 // **************** Trigger object ****************
