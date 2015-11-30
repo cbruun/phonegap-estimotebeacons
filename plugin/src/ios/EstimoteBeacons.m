@@ -205,7 +205,6 @@
 	[self beacons_onReset];
 	[self nearables_onReset];
 	[self triggers_onReset];
-	[self bluetooth_onReset];
 }
 
 /*********************************************************/
