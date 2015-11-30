@@ -192,7 +192,6 @@
 	[self beacons_pluginInitialize];
 	[self nearables_pluginInitialize];
 	[self triggers_pluginInitialize];
-	[self bluetooth_pluginInitialize];
 
 	return self;
 }
