@@ -2046,7 +2046,7 @@
 	[self sendTriggerEventToJavaScript: event];
 }
 
--@end // End of implementation of class EstimoteBeacons
+@end // End of implementation of class EstimoteBeacons
 
 #pragma mark - Trigger object
 
