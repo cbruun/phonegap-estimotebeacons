@@ -8,7 +8,6 @@
 #import <EstimoteSDK/ESTCloudManager.h>
 #import <EstimoteSDK/ESTEddystone.h>
 #import <EstimoteSDK/ESTEddystoneManager.h>
-#import <CoreBluetooth/CoreBluetooth.h>
 
 #import "EstimoteBeacons.h"
 
@@ -72,8 +71,7 @@
 	ESTBeaconManagerDelegate,
 	ESTBeaconManagerDelegate,
 	ESTNearableManagerDelegate,
-	ESTTriggerManagerDelegate,
-	CBCentralManagerDelegate >
+	ESTTriggerManagerDelegate>
 
 /**
  * Estimote Utility manager.
@@ -164,16 +162,6 @@
  * Trigger identifiers are used as keys.
  */
 @property NSMutableDictionary* triggers;
-
-/**
- * Bluetooth manager.
- */
-@property CBCentralManager* bluetoothManager;
-
-/**
- * Variable that tracks Bluetooth state.
- */
-@property bool bluetoothState;
 
 @end
 
@@ -2059,56 +2047,6 @@
 }
 
 #pragma mark - Bluetooth State Implementation
-
-/*********************************************************/
-/************ Bluetooth State Implementation *************/
-/*********************************************************/
-
-/**
- * Read Bluetooth state.
- */
-- (void) bluetooth_bluetoothState: (CDVInvokedUrlCommand*)command
-{
-	// Return value to JavaScript.
-	[self.commandDelegate
-		sendPluginResult: [CDVPluginResult
-			resultWithStatus: CDVCommandStatus_OK
-			messageAsBool: self.bluetoothState]
-		callbackId: command.callbackId];
-}
-
-- (void) bluetooth_pluginInitialize
-{
-	// Create CoreBluetooth manager.
-	self.bluetoothManager = [[CBCentralManager alloc]
-		initWithDelegate: self
-		queue: dispatch_get_main_queue()
-		options: @{CBCentralManagerOptionShowPowerAlertKey: @(NO)}];
-
-	// This sets the initial state.
-	[self centralManagerDidUpdateState: self.bluetoothManager];
-}
-
-- (void) bluetooth_onReset
-{
-	self.bluetoothManager = nil;
-}
-
-#pragma mark - Bluetooth on/off handler
-
-- (void)centralManagerDidUpdateState:(CBCentralManager *)central
-{
-	if ([central state] == CBCentralManagerStatePoweredOn)
-	{
-		self.bluetoothState = YES;
-	}
-	else
-	{
-		self.bluetoothState = NO;
-	}
-}
-
-@end // End of implementation of class EstimoteBeacons
 
 #pragma mark - Trigger object
 
